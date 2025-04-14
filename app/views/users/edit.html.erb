@@ -1,0 +1,12 @@
+<h2>Modifier mon profil</h2>
+
+<%= simple_form_for @user, url: update_profile_path, method: :patch do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :photo, as: :file %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Mettre à jour" %>
+  </div>
+<% end %>

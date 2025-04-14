@@ -1,0 +1,33 @@
+<div class="justify-content-center">
+  <div class="d-flex">
+    <%= link_to root_path do %>
+      <i class="material-icons material-symbols-sharp">Retour à la page d'accueil</i>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <h1 class="padding-name"><%= @user.first_name %> <%= @user.last_name %></h1>
+  </div>
+  <div class="padding-">
+    <div>
+      <p><strong>Nom</strong><br><%= @user.first_name %> <%= @user.last_name %></p><hr>
+    </div>
+    <div>
+      <p><strong>Email</strong><br>t**t@example.com</p><hr>
+    </div>
+    <div>
+      <p><strong>Password</strong><br>********</p><hr>
+    </div>
+  </div>
+  <div class="text-center" style="text-decoration: underline; font-weight: bold">
+    <p style="padding-top: 60px; font-weight: bold">Connexion et sécurité</p>
+    <p style="font-weight: bold">Mentions légales</p>
+    <p style="font-weight: bold">Conditions Générales d'Utilisation</p>
+  </div>
+   <% if user_signed_in? %>
+      <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "button button-red position-relative", style: "top: 100px;" %>
+    <% else %>
+      <%= link_to "Log In", new_user_session_path %>
+    <% end %>
+</div>
+
+<%= link_to "Modifier mon profil", edit_users_path, class: "btn btn-primary" %>
