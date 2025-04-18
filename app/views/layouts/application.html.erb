@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VinylesFlow</title>
+    <title>Vinyle Flow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   </head>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const resetButton = document.getElementById("reset-btn");
+  const searchInput = document.getElementById("search-input");
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
-
-    <%= yield %>
+  if (resetButton) {
+    resetButton.addEventListener("click", function() {
+      searchInput.value = ''; // Vider le champ de recherche
+      searchInput.form.submit(); // Soumettre le formulaire pour réinitialiser les résultats
+    });
+  }
+});
+</script>
+  <body class="background">
+    <div class="background container-app" style="height: 100vh;">
+      <div class="background">
+        <div class="col-12 col-sm-6">
+          <%= render "shared/flashes" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

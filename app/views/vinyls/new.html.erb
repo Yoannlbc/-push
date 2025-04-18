@@ -1,0 +1,19 @@
+<div class="background">
+  <div class="d-flex justify-content-between">
+    <%= link_to root_path do %>
+      Retour à la collection</i>
+    <% end %>
+  </div>
+
+  <div>
+      <%= simple_form_for(@vinyl) do |f| %>
+        <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input border-input"} %>
+        <%= f.input :title, placeholder: "L'école du micro d'argent, Nevermind, Thriller,  ...", input_html: {class: "background input border-input"} %>
+        <%= f.input :artist, placeholder: "Pink Foyd, Block Party, Kendrick Lamar ...", input_html: {class: "background input border-input"} %>
+        <%= f.input :genre, placeholder: "Rock, Rap, Pop, Reggae, Techno...", input_html: {class: "background input border-input"} %>
+        <%= f.input :release_year, placeholder: "2017", input_html: {class: "background input border-input"} %>
+        <%= f.button :submit, "Ajouter le vinyle", class: "button button-black", style: "margin-top: 150px" %>
+        <% end %>
+
+  </div>
+</div>

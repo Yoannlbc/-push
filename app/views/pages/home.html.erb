@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div style="height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding-top: 100px;">
+
+<div class="vinyl-logo">
+        <%= image_tag("Vinyles_flow.png", alt: "Vinyle Flow Logo") %>
+      </div>
+      <div class="logo-vinyles-flow">
+<%= image_tag("Logo_vinyles_flow.png", alt: "Vinyle Flow Logo") %>
+</div>
+<%# <p style="margin-top: 10px; color: white;">Gérer sa collection de vinyles n'a jamais été aussi simple</p> %>
+
+<% if user_signed_in? %>
+  <p>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+    <%= link_to "Voir ma collection", dashboard_path, class: "btn btn-primary" %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to "Se connecter", new_user_session_path, class: "button button-orange-border position-relative", style: "margin-top: 20px;" %>
+    <%= link_to "Créer un compte", new_user_registration_path, class: "button button-orange position-relative", style: "margin-top: 20px;" %>
+  </p>
+<% end %>
+</div>

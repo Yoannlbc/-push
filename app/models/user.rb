@@ -11,4 +11,12 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  after_create :create_vinyl_box
+
+  private
+
+  def create_vinyl_box
+    VinylBox.create!(user: self)
+  end
 end

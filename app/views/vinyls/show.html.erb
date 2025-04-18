@@ -1,0 +1,21 @@
+<div class="background">
+  <div class="d-flex justify-content-between align-item-center">
+    <%= link_to root_path do %>
+      <i class="material-icons material-symbols-sharp"></i>
+    <% end %>
+    <%= link_to edit_vinyl_path(@vinyl) do %>
+      <i class="material-icons material-symbols-sharp">edit</i>
+      <% end %>
+  </div>
+    <div>
+      <%= cl_image_tag(@vinyl.photo.key, class:"vinyl-cover") if @vinyl.photo.attached? %>
+      <div class="text-vinyl position-relative">
+        <div class="paragraph-div"><%= @vinyl.title%></div>
+          <h3><%= @vinyl.artist %></h3>
+          <p class="paragraphe-margin"><%= @vinyl.genre %> | <%= @vinyl.release_year %></p>
+      </div>
+    </div>
+<%= link_to "Supprimer le vinyle", vinyl_path(@vinyl), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr?" }, class: "button button-red position-relative", style: "top: 70px;" %>
+<%= link_to "Retour à la collection", dashboard_path, class: "btn btn-secondary" %>
+    </div>
+</div>

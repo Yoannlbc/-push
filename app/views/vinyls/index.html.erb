@@ -1,0 +1,16 @@
+<h2>Ma collection</h2>
+
+<% @vinyls.each do |vinyl| %>
+  <div class="vinyl-card">
+    <%= link_to vinyl_path(vinyl) do %>
+      <%= cl_image_tag vinyl.photo.key, class: "vinyl-cover" if vinyl.photo.attached? %>
+      <p><%= vinyl.title %></p>
+      <p><%= vinyl.artist %></p>
+      <%= link_to "Modifier le vinyle", edit_vinyl_path(vinyl), class: "btn btn-secondary" %>
+     <%= link_to "Supprimer le vinyle", vinyl_path(vinyl), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr?" }, class: "button button-red position-relative", style: "top: 70px;" %>
+    <% end %>
+  </div>
+<% end %>
+
+<br>
+<%= link_to "Retour à l'accueil", dashboard_path, class: "btn btn-secondary" %>

@@ -1,0 +1,112 @@
+<div class="d-flex justify-content-between align-items-center p-5">
+  <a href="/profile">
+    <i class="fa-solid fa-user-ninja" style="font-size: 30px; color: white;"></i>
+  </a>
+  <%= link_to new_vinyl_path do %>
+  <%= image_tag("turntable_vinyl_record_player.png", style: "height: 30px;", alt: "Ajouter un vinyle") %>
+  <% end %>
+</div>
+
+<div class="container-app">
+  <%= image_tag "Vinyles_flow.png", width: 200, height: 70, style: "display: block; margin: 0 auto;" %>
+
+
+  <div class="container mt-4", style="text-align: center;">
+  <p>
+    <strong>Nombre de vinyles dans la collection :</strong>
+    <span class="cellar-text"><%= pluralize(@vinyls.size, 'vinyle') %></span>
+  </p>
+  </div>
+
+<div class="container mt-4 d-flex justify-content-left search-border">
+  <%= form_with url: dashboard_path, method: :get, html: { autocomplete: "off", data: { turbo: false } }, class: "search-bar d-flex align-items-center" do %>
+    <div class="d-flex">
+      <%= text_field_tag :query, params[:query], class: "form-control search-input input", id: "search-input", placeholder: "Rechercher un vinyle" %>
+
+      <% if params[:query].present? %>
+        <button type="button" id="reset-btn" class="bg-transparent border-0 btn-position" style="cursor: pointer;">
+          <i class="material-icons" style="font-size: 30px; color: black;">cancel</i>
+        </button>
+      <% end %>
+
+      <button type="submit" class="bg-transparent border-0 btn-position">
+        <i class="material-icons" style="font-size: 30px;">search</i>
+      </button>
+    </div>
+  <% end %>
+</div>
+
+<div class="container mt-4", style="text-align: center;">
+  <h2>Vitrine</h2>
+<div id="carouselExampleInterval" class="carousel slide custom-carousel"
+     data-bs-touch="true"
+     data-bs-ride="carousel"
+     data-bs-interval="false">
+
+  <div class="carousel-inner">
+    <% @vinyls.sample(3).each_with_index do |vinyl, index| %>
+      <div class="carousel-item <%= 'active' if index == 0 %>">
+        <%= link_to vinyl_path(vinyl) do %>
+          <% if vinyl.photo.attached? %>
+            <%= cl_image_tag vinyl.photo.key, class: "vinyl-cover", style: "display: block; margin: 0 auto;"%>
+          <% end %>
+          <p class="text-white text-center mt-2">
+            <%= vinyl.artist %> | <%= vinyl.title %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+ </div>
+
+<div class="container mt-4", style="text-align: center;">
+  <h2>Ma collection</h2>
+  <div class="vinyls-grid">
+    <% @vinyls.first(5).each do |vinyl| %>
+      <div class="vinyl-card">
+        <%= link_to vinyl_path(vinyl) do %>
+          <% if vinyl.photo.attached? %>
+            <%= cl_image_tag vinyl.photo.key, class: "vinyl-cover" %>
+          <% end %>
+           <p><%= vinyl.artist %> | <%= vinyl.title %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+  <div class="button-wrapper">
+  <%= link_to "Voir toute la collection", vinyls_path, class: "small-button-orange" %>
+</div>
+
+</div>
+
+<%# <% @slots.each do |slot| %>
+    <%# <li> %>
+      <%# Slot: <%= slot.position, %>
+      <%# Vinyl: <%= slot.vinyl.title %>
+    <%# </li>
+  <% end %>
+
+
+
+
+
+
+<%# <ul> %>
+    <%# <% @carousel_vinyls.each do |vinyl| %>
+    <%# <%= cl_image_tag vinyl.photo.key, class: "vinyl-cover" %>
+      <%# <p><%= vinyl.artist | <%= vinyl.title %>
+    <%# <% end %>
+  <%# </ul> %>
