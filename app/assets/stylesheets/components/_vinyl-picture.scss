@@ -1,0 +1,21 @@
+.vinyl-container {
+  width: 80%;
+  margin: 100px auto;
+  background-color: #646464;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vinyl-picture {
+  width: 100%;
+  height: 370px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px 10px 0 0;
+}
+
+.text-vinyl {
+  padding: 15px;
+  color: white;
+  text-align: center;
+}

@@ -18,6 +18,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_photo
+    @user = current_user
+    if params[:photo].present?
+      @user.photo.attach(params[:photo])
+      redirect_to profile_path, notice: "Photo de profil mise à jour avec succès."
+    else
+      redirect_to profile_path, alert: "Aucune photo sélectionnée."
+    end
+  end
+
+  def remove_photo
+    @user = current_user
+    if @user.photo.attached?
+      @user.photo.purge
+      redirect_to profile_path, notice: "Photo de profil supprimée avec succès."
+    else
+      redirect_to profile_path, alert: "Aucune photo à supprimer."
+    end
+  end
+
   private
 
   def user_params

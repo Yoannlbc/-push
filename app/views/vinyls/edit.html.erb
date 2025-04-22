@@ -1,18 +1,18 @@
 <div class="background">
   <div class="d-flex justify-content-between">
     <%= link_to root_path do %>
-      Retour à la collection
+      <i class="material-icons material-symbols-sharp" style="font-size: 40px; vertical-align: middle; margin-left: 35px; transform: translateY(30px);">west</i>
     <% end %>
   </div>
 
-  <div>
+  <div class="edit-vinyl-container pt-5">
       <%= simple_form_for(@vinyl) do |f| %>
-        <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input border-input"} %>
-        <%= f.input :title, placeholder: "L'école du micro d'argent, Nevermind, Thriller,  ...", input_html: {class: "background input border-input"} %>
-        <%= f.input :artist, placeholder: "Pink Foyd, Block Party, Kendrick Lamar ...", input_html: {class: "background input border-input"} %>
+        <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input border-input"}  %>
+        <%= f.input :title, label: "Titre", placeholder: "L'école du micro d'argent, Nevermind, Thriller,  ...", input_html: {class: "background input border-input"} %>
+        <%= f.input :artist, label: "Artiste", placeholder: "Pink Foyd, Block Party, Kendrick Lamar ...", input_html: {class: "background input border-input"} %>
         <%= f.input :genre, placeholder: "Rock, Rap, Pop, Reggae, Techno...", input_html: {class: "background input border-input"} %>
-        <%= f.input :release_year, placeholder: "2017", input_html: {class: "background input border-input"} %>
-        <%= f.button :submit, "Ajouter le vinyle", class: "button button-black", style: "margin-top: 150px" %>
+        <%= f.input :release_year, label: "Année de sortie", placeholder: "2017", input_html: {class: "background input border-input"} %>
+        <%= f.button :submit, "Modifier le vinyle", class: "button button-orange-border", style: "margin-top: 250px; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto;" %>
         <% end %>
 
   </div>

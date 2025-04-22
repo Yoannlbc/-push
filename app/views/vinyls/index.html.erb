@@ -1,16 +1,20 @@
-<h2>Ma collection</h2>
+<%= link_to(current_user ? dashboard_path : root_path) do %>
+      <i class="material-icons material-symbols-sharp" style="font-size: 40px; vertical-align: middle; margin-left: 35px; transform: translateY(30px);">west</i>
+    <% end %>
+<div class="container-app pt-5">
+  <h1 class="text-center mb-4">Ma Collection Complète</h1>
 
-<% @vinyls.each do |vinyl| %>
-  <div class="vinyl-card">
-    <%= link_to vinyl_path(vinyl) do %>
-      <%= cl_image_tag vinyl.photo.key, class: "vinyl-cover" if vinyl.photo.attached? %>
-      <p><%= vinyl.title %></p>
-      <p><%= vinyl.artist %></p>
-      <%= link_to "Modifier le vinyle", edit_vinyl_path(vinyl), class: "btn btn-secondary" %>
-     <%= link_to "Supprimer le vinyle", vinyl_path(vinyl), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr?" }, class: "button button-red position-relative", style: "top: 70px;" %>
+
+  <div class="vinyl-bookshelf-container">
+  <div class="vinyl-bookshelf vinyl-bookshelf-large">
+    <% @vinyls.each do |vinyl| %>
+      <%= link_to vinyl_path(vinyl), class: "vinyl-link" do %>
+        <div class="vinyl-spine" style="background-color: <%= @vinyl_colors[vinyl.id] %>">
+          <div class="vinyl-spine-title"><%= "#{vinyl.artist} - #{vinyl.title}" %></div>
+        </div>
+      <% end %>
     <% end %>
   </div>
-<% end %>
-
-<br>
-<%= link_to "Retour à l'accueil", dashboard_path, class: "btn btn-secondary" %>
+</div>
+  </div>
+</div>

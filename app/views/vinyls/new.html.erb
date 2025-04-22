@@ -1,19 +1,54 @@
 <div class="background">
   <div class="d-flex justify-content-between">
     <%= link_to root_path do %>
-      Retour à la collection</i>
+      <i class="material-icons material-symbols-sharp" style="font-size: 40px; vertical-align: middle; margin-left: 35px; transform: translateY(30px);">west</i>
     <% end %>
   </div>
 
-  <div>
-      <%= simple_form_for(@vinyl) do |f| %>
-        <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input border-input"} %>
-        <%= f.input :title, placeholder: "L'école du micro d'argent, Nevermind, Thriller,  ...", input_html: {class: "background input border-input"} %>
-        <%= f.input :artist, placeholder: "Pink Foyd, Block Party, Kendrick Lamar ...", input_html: {class: "background input border-input"} %>
-        <%= f.input :genre, placeholder: "Rock, Rap, Pop, Reggae, Techno...", input_html: {class: "background input border-input"} %>
-        <%= f.input :release_year, placeholder: "2017", input_html: {class: "background input border-input"} %>
-        <%= f.button :submit, "Ajouter le vinyle", class: "button button-black", style: "margin-top: 150px" %>
-        <% end %>
+  <div class="new-form pt-5">
+    <h2 class="text-center mb-4">Ajout d'un vinyle</h2>
 
+    <%= simple_form_for @vinyl do |f| %>
+      <div class="text-center mb-4">
+        <div class="photo-upload-container">
+          <div class="vinyl-placeholder">
+            <%= image_tag "vinyle_photo_upload.png", class: "vinyl-image", id: "vinyl-preview" %>
+          </div>
+          <p class="mt-2">Ajouter une photo de la pochette</p>
+          <%= f.input :photo, as: :file, label: false, input_html: { class: "d-none", id: "photo-upload", onchange: "previewPhoto(this)" } %>
+        </div>
+      </div>
+
+      <%= f.input :artist, label: "Nom de l'artiste", placeholder: "Ex: Pink Floyd, AC/DC, Beck, Party, NTM..." %>
+      <%= f.input :title, label: "Nom de l'album", placeholder: "Ex: Paris sous les bombes, Silent Alarm..." %>
+      <%= f.input :genre, label: "Style", placeholder: "Ex: Rock, Rap, Reggae, Pop..." %>
+      <%= f.input :release_year, label: "Année", placeholder: "Ex: 2017" %>
+
+      <% if @slot_id.present? %>
+        <%= hidden_field_tag :slot_id, @slot_id %>
+      <% else %>
+        <div class="form-group mt-3">
+          <label>Emplacement</label>
+          <div class="vinyl-bookshelf vinyl-box-effect mt-2">
+            <% if @empty_slots && @empty_slots.any? %>
+              <% @empty_slots.each do |slot| %>
+                <div class="slot-selection">
+                  <%= radio_button_tag :slot_id, slot.id, false, class: "slot-radio" %>
+                  <label for="slot_id_<%= slot.id %>" class="vinyl-spine empty-slot">
+                    <div class="vinyl-spine-title">Emplacement <%= slot.id %></div>
+                  </label>
+                </div>
+              <% end %>
+            <% else %>
+              <p>Aucun emplacement disponible</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div style="margin-top: 20px; display: flex">
+  <%= f.button :submit, "Ajouter ce vinyle", class: "button add-vinyl-button" %>
+</div>
+    <% end %>
   </div>
 </div>

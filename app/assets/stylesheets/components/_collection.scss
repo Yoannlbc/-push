@@ -1,0 +1,146 @@
+.vinyl-bookshelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px auto;
+  justify-content: center;
+  max-width: 95%;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.vinyl-bookshelf-container {
+  margin: 30px 0;
+}
+
+.vinyl-bookshelf-large {
+  padding: 20px;
+  max-width: 90%;
+}
+
+.vinyl-spine {
+  position: relative;
+  width: 30px;
+  height: 120px;
+  border-radius: 3px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin: 5px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.vinyl-spine:hover {
+  transform: translateY(-5px);
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.vinyl-spine-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 120px;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vinyl-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .vinyl-spine {
+    height: 100px;
+    width: 25px;
+  }
+
+  .vinyl-spine-title {
+    font-size: 9px;
+    width: 100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .vinyl-spine {
+    height: 150px;
+    width: 35px;
+  }
+
+  .vinyl-spine-title {
+    font-size: 12px;
+    width: 150px;
+  }
+}
+
+.vinyl-spine.empty-slot {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+  position: relative;
+}
+
+.vinyl-spine.empty-slot:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.vinyl-spine.empty-slot .vinyl-spine-title {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.vinyl-spine.empty-slot::before {
+  content: "+";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.slot-selection {
+  display: inline-block;
+  margin: 0 5px;
+  position: relative;
+}
+
+.slot-radio {
+  position: absolute;
+  opacity: 0;
+}
+
+.slot-radio:checked + label {
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.form-label {
+  margin-left: 10px;
+}
+
+.form-control {
+  margin-left: 10px;
+}
+
+.form-group label {
+  margin-left: 10px;
+}
+
+.form-group {
+  margin-left: 2px;
+}
+
+.new-form {
+  max-width: 600px;
+  margin: 0 auto;
+}

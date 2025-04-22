@@ -21,6 +21,10 @@
   padding: 10px 50px;
   border-radius: 25px;
   display: inline-block;
+  display: flex;
+  cursor: pointer;
+  margin: auto;
+  width: 300px;
 }
 
 .button-orange-border {
@@ -28,6 +32,13 @@
   background-color: transparent;
   color: #FF5A23;
   cursor: pointer;
+  width: 300px;
+  font: 200 20px Inter, sans-serif;
+  display: inline-block;
+  display: flex;
+  cursor: pointer;
+  margin: auto;
+  justify-content: center;
 }
 
 .sign-up {
@@ -41,4 +52,44 @@
   height: 80px;
   margin-top: 5px;
   margin-bottom: 15px;
+}
+
+.button-center {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-out-button{
+  width: 300px;
+  margin-top: 150px;
+  background-color: #FF5A23;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 250px auto 0 auto;
+}
+
+.create-account-button{
+  background-color: #FF5A23;
+  color: white;
+  cursor: pointer;
+  width: 300px;
+}
+
+.add-vinyl-button{
+  width: 300px;
+  margin-top: 150px;
+  background-color: #FF5A23;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: auto;
+  display: inline-block;
+  justify-content: center;
+  margin-top: 50px;
 }

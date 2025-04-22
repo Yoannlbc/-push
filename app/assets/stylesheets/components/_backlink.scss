@@ -1,0 +1,16 @@
+.back-link {
+  display: inline-block;
+  text-decoration: none;
+
+  i {
+    font-size: 40px;
+    color: #444;
+    transition: color 0.2s ease;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &:hover {
+      color: #FF6B35;
+    }
+  }
+}
