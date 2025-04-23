@@ -1,24 +1,28 @@
 <div style="height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding-top: 100px;">
-<h1>Connexion</h1>
-<p>Nous sommes ravis de te revoir!</p>
+  <h1>Connexion</h1>
+  <p>Nous sommes ravis de te revoir!</p>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'devise-sign-in-form' }) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email", class: "form-control" } %>
-    <%= f.input :password,
-                required: true,
-                input_html: { autocomplete: "current-password", class: "form-control" } %>
-    <%= f.input :remember_me, as: :boolean, label: "Se souvenir de moi" if devise_mapping.rememberable? %>
-  </div>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'devise-sign-in-form', style: 'width: 300px;' }) do |f| %>
+    <div class="form-inputs pt-5" style="width: 100%;">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email", class: "form-control", style: "width: 100%; margin-bottom: 15px; margin-left:4px" } %>
+      <%= f.input :password,
+                  required: true,
+                  input_html: { autocomplete: "current-password", class: "form-control", style: "width: 100%; margin-bottom: 15px;margin-left:4px" } %>
+      <%= f.input :remember_me,
+                  as: :boolean,
+                  label: "Se souvenir de moi",
+                  wrapper_html: { style: "display: flex; align-items: center; justify-content: flex-start; width: 100%; text-align: left; margin-left: 6px; margin-top: -10px;" },
+                  input_html: { style: "margin-right: 10px;" } if devise_mapping.rememberable? %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Se connecter", class: "button small-button-orange" %>
-  </div>
-<% end %>
-<br>
+    <div class="form-actions pt-5" style="width: 100%; display: flex; justify-content: center;">
+      <%= f.button :submit, "Se connecter", class: "button small-button-orange", style: "width: 100%; padding: 10px 0;" %>
+    </div>
+  <% end %>
+  <br>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
 </div>

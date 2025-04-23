@@ -1,10 +1,10 @@
 <div style="height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center; padding-top: 100px;">
 
-<div class="vinyl-logo">
+<div class="vinyl-logo pt-5">
         <%= image_tag("Vinyles_flow.png", alt: "Vinyle Flow Logo") %>
       </div>
       <div class="logo-vinyles-flow">
-<%= image_tag("Logo_vinyles_flow.png", alt: "Vinyle Flow Logo") %>
+<%= image_tag("Logo_vinyles_flow.png", alt: "Vinyle Flow Logo", class: "logo-vinyles-flow") %>
 </div>
 <%# <p style="margin-top: 10px; color: white;">Gérer sa collection de vinyles n'a jamais été aussi simple</p> %>
 
@@ -15,8 +15,9 @@
   </p>
 <% else %>
   <p>
-    <%= link_to "Se connecter", new_user_session_path, class: "button button-orange-border position-relative", style: "margin-top: 20px;" %>
+    <%= link_to "Se connecter", new_user_session_path, class: "button button-orange-border position-relative", style: "margin-top: 300px;" %>
     <%= link_to "Créer un compte", new_user_registration_path, class: "button create-account-button position-relative", style: "margin-top: 20px;" %>
   </p>
 <% end %>
 </div>
+

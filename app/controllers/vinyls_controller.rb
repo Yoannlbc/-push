@@ -79,7 +79,6 @@ class VinylsController < ApplicationController
   end
 
   def generate_vinyl_colors(vinyls_collection)
-    # Liste de couleurs prédéfinies pour les vinyles
     colors = [
       "#d16b6b", "#c0c06c", "#9ed19e", "#d577af", "#d6a6d6",
       "#5fa3a3", "#8c8c8c", "#70b170", "#d6b63c", "#4e5fd1",

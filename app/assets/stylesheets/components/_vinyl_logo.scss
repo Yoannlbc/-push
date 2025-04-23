@@ -8,12 +8,9 @@
   margin-bottom: 20px;
 }
 
-.logo-vinyles-flow{
-  width: 150px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
+.logo-vinyles-flow {
+  width: 250px;      /* ajuste selon ton besoin */
+  height: auto;      /* garde les proportions */
+  display: block;
+  margin: 30px auto 20px auto;
 }

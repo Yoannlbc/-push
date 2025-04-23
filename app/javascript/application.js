@@ -33,11 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Récupérer l'élément d'image et l'input file
   const vinylPreview = document.getElementById('vinyl-preview');
   const photoUpload = document.getElementById('photo-upload');
 
-  // Ajouter un écouteur d'événement au clic sur l'image pour déclencher l'input file
   if (vinylPreview) {
     vinylPreview.addEventListener('click', function() {
       photoUpload.click();
@@ -45,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Fonction pour prévisualiser la photo sélectionnée
 function previewPhoto(input) {
   if (input.files && input.files[0]) {
     const reader = new FileReader();
