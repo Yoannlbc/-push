@@ -9,20 +9,25 @@
 #   end
 # require "open-uri"
 
-Vinyl.destroy_all
-Slot.destroy_all
-User.destroy_all
-puts "Old data destroyed."
+puts "Starting seeds..."
 
-user1 = User.create!(
-  email: "demo@vinyleflow.com",
-  first_name: "Yoann",
-  last_name: "Leblanc",
-  password: "password"
-)
-puts "User created."
+if Rails.env.development?
+  puts "Running seeds in development environment..."
 
-vinyls_data = [
+  Vinyl.destroy_all
+  Slot.destroy_all
+  User.destroy_all
+  puts "Old data destroyed."
+
+  demo_user = User.create!(
+    email: "demo@vinyleflow.com",
+    first_name: "Yoann",
+    last_name: "Leblanc",
+    password: "password"
+  )
+  puts "Demo user created."
+
+  vinyls_data = [
   {
     title: "Enter the Wu-Tang (36 Chambers)",
     artist: "Wu-Tang Clan",
@@ -143,19 +148,22 @@ vinyls_data = [
     image_url: "https://res.cloudinary.com/dmrxyk62j/image/upload/v1744818309/pink_floyd_animals_ileauw.jpg"
   }
 ]
-vinyls_data.each do |vinyl_data|
-  vinyl = Vinyl.new(
-    title: vinyl_data[:title],
-    artist: vinyl_data[:artist],
-    genre: vinyl_data[:genre],
-    release_year: vinyl_data[:release_year],
-    user: user1
-  )
+  vinyls_data.each do |vinyl_data|
+    vinyl = Vinyl.new(
+      title: vinyl_data[:title],
+      artist: vinyl_data[:artist],
+      genre: vinyl_data[:genre],
+      release_year: vinyl_data[:release_year],
+      user: demo_user
+    )
 
-  file = URI.open(vinyl_data[:image_url])
+    file = URI.open(vinyl_data[:image_url])
+    vinyl.photo.attach(io: file, filename: "#{vinyl_data[:title].parameterize}.jpg", content_type: "image/jpg")
+    vinyl.save!
+    puts "Created: #{vinyl.title} by #{vinyl.artist}"
+  end
 
-  vinyl.photo.attach(io: file, filename: "#{vinyl_data[:title].parameterize}.jpg", content_type: "image/jpg")
-
-  vinyl.save!
-  puts "Created: #{vinyl.title} by #{vinyl.artist}"
+  puts "Seeds finished successfully for development."
+else
+  puts "No seeds loaded (non-development environment)."
 end
