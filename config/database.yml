@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: vinyles_flow_production
-  username: vinyles_flow
-  password: <%= ENV["VINYLES_FLOW_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
